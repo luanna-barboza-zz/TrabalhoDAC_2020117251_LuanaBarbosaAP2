@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Listagem de Jogos</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:messages id="msgs" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<p:panel header="Listagem de Jogos">
+
+			<p:dataTable id="jogos" var="jogo" value="#{jogoBean.lista}"
+				editable="true" rowKey="#{jogoBean.jogo.id}" paginator="true"
+				rows="10" rowSelectMode="add" paginatorPosition="bottom"
+				selectionMode="single" editMode="cell" widgetVar="cellJogos">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{jogo.id}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="V1">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v1}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText value="#{jogo.v1}" style="width:100%"
+								label="Valor 1" />
+						</f:facet>
+					</p:cellEditor>
+
+				</p:column>
+
+				<p:column headerText="V2">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v2}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText value="#{jogo.v2}" style="width:100%"
+								label="Valor 2" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="V3">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v3}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText value="#{jogo.v3}" style="width:100%"
+								label="Valor 3" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="V4">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v4}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText value="#{jogo.v4}" style="width:100%"
+								label="Valor 4" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="V5">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v5}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText value="#{jogo.v5}" style="width:100%"
+								label="Valor 5" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Data do Cadastro">
+					<h:outputText value="#{jogo.dataCadastro}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"></f:convertDateTime>
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Opções" exportable="false">
+
+					<p:commandButton icon="pi pi-pencil" styleClass="rounded-button"
+						action="#{jogoBean.editar}" update="form">
+						<f:setPropertyActionListener value="#{jogo}"
+							target="#{jogoBean.jogo}" />
+					</p:commandButton>
+
+					<p:commandButton icon="pi pi-trash"
+						styleClass="rounded-button ui-button-danger"
+						action="#{jogoBean.excluir}" ajax="false">
+						<f:setPropertyActionListener value="#{jogo}"
+							target="#{jogoBean.jogo}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:commandButton icon="pi pi-arrow-circle-left" value="Voltar"
+				ajax="false" action="index.xhtml">
+			</p:commandButton>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

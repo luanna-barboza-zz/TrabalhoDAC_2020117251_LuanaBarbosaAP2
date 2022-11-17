@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Jogos</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<p:panel header="Cadastro de Jogos">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Valor 1: "></p:outputLabel>
+				<p:inputText value="#{jogoBean.jogo.v1}"></p:inputText>
+
+				<p:outputLabel value="Valor 2: "></p:outputLabel>
+				<p:inputText value="#{jogoBean.jogo.v2}"></p:inputText>
+
+				<p:outputLabel value="Valor 3: "></p:outputLabel>
+				<p:inputText value="#{jogoBean.jogo.v3}"></p:inputText>
+
+				<p:outputLabel value="Valor 4: "></p:outputLabel>
+				<p:inputText value="#{jogoBean.jogo.v4}"></p:inputText>
+
+				<p:outputLabel value="Valor 5: "></p:outputLabel>
+				<p:inputText value="#{jogoBean.jogo.v5}"></p:inputText>
+
+				<p:outputLabel value="Data do Cadastro "></p:outputLabel>
+				<p:datePicker id="time" value="#{jogoBean.jogo.dataCadastro}"
+					showTime="true" locale="de" pattern="dd/MM/yyyy HH:mm:ss" disabled="true" />
+				
+			</p:panelGrid>
+			<p:commandButton icon="pi pi-save" value="Salvar"
+				styleClass="ui-button-raised ui-button-success"
+				action="#{jogoBean.salvar}" update="form"></p:commandButton>
+			<p:commandButton icon="pi pi-list" value="Listar" ajax="false"
+				action="listagem.xhtml"></p:commandButton>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>
